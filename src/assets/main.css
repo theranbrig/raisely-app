@@ -607,39 +607,8 @@ video {
 
 body {
   margin: 0;
-  font-family: -apple-system, 'ObjektivMk3W03-Thin', BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.btn {
-  --bg-opacity: 1;
-  background-color: #6138D8;
-  background-color: rgba(97, 56, 216, var(--bg-opacity));
-  border-radius: 9999px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
-  font-weight: 700;
-  transition: all 1s linear;
-}
-
-.btn:disabled {
-  opacity: 0.75;
-}
-
-.btn:hover {
-  --bg-opacity: 1;
-  background-color: #9638d8;
-  background-color: rgba(150, 56, 216, var(--bg-opacity));
-  transition: all 0.5s linear;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 
 .form-label {
@@ -670,6 +639,35 @@ input:required:valid {
 input:focus:required:invalid,
 input:not(:placeholder-shown):invalid {
   border: 1px solid tomato !important;
+}
+
+.btn:disabled {
+  opacity: 0.75;
+}
+
+.btn {
+  --bg-opacity: 1;
+  background-color: #6138D8;
+  background-color: rgba(97, 56, 216, var(--bg-opacity));
+  font-weight: 400;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 9999px;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5rem;
+  transition-property: all;
+  transition-duration: 1000ms;
+}
+
+.btn:hover {
+  --bg-opacity: 1;
+  background-color: #9638d8;
+  background-color: rgba(150, 56, 216, var(--bg-opacity));
 }
 
 .space-y-0 > :not(template) ~ :not(template) {

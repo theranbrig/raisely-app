@@ -6,7 +6,7 @@ import SuccessModal from './SuccessModal';
 const Form = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const [processComplete, setProcessComplete] = useState(false);
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -142,12 +142,11 @@ const Form = () => {
           />
         </div>
         <button
-          disabled={ loading || !firstName || !lastName || !email || !password }
-          className='mx-auto text-2xl font-extrabold'
-          type='submit' href="#"
-        >
-          <span>{loading ? 'REGISTERING...' : 'REGISTER'}</span>
-          <div className="liquid"></div>
+          disabled={loading || !firstName || !lastName || !email || !password}
+          className='btn'
+          type='submit'
+          href='#'>
+          {loading ? 'REGISTERING...' : 'REGISTER'}
         </button>
         {error ? <p className='w-full bg-red-200 mt-12 p-8 text-lg'>{error}</p> : null}
       </form>
@@ -162,6 +161,9 @@ const Form = () => {
         />
       ) : null}
       {processComplete ? <ProcessComplete setProcessComplete={setProcessComplete} /> : null}
+      <button className='mt-8' onClick={() => setProcessComplete(true)}>
+        Learn more about Theran Brigowatz
+      </button>
     </>
   );
 };

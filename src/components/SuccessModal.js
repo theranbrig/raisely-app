@@ -21,14 +21,13 @@ const SuccessModal = ({
           Welcome {firstName} {lastName}. You can now login anytime with {email}.
         </p>
         <button
-          className='font-extrabold'
+          className='btn w-11/12 lg:w-1/4'
           onClick={() => {
             setSuccess(false);
             resetForm();
             setProcessComplete(true);
           }}>
-          <span>CLOSE</span>
-          <div className="liquid"></div>
+          CLOSE
         </button>
       </div>
     </motion.div>

@@ -20,8 +20,7 @@ A few notes on what was built here.
   - Routing. I chose tho just make this a one page application as I did not have time to set up a router.  Typically the success and finished pages would be separate routes, rather than just modals, but for time's sake I decided to go the modal route.
 
 - Buttons / Links:
-  - The buttons right now are at fixed with for the animation purposes.  With the short time I wasn't able to build the `::before` and `::after` animations with dynamically sized buttons. This is something given more time I could easily make.
-  - Animation coloring and speed are not exact.  It approximates what you have on Raisely, but is not perfect and could use some fixing with some cubic-beziers and more exact timing functions.
+  - The animation styling is not how you have it on Raisely. I know that the animation uses transforms on the `::after` and `::before` elements.  It rotates them and brings them into button area when in the hover state.  However, I could not get the animation to work properly with the short amount of time with dynamically sized buttons. It worked, but was not correct in animation colors and timing.  This opted for just a hover color transition.  I would rather give you something that is clean than not properly done.  I would add in the proper hover animation if given more time.
 
 - Styling
   - Design system is not completely uniform.  I tried to take some cues from Raisely, but it could definitely use improvement.

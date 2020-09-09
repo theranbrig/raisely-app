@@ -4,28 +4,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, 'ObjektivMk3W03-Thin', BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.btn {
-  @apply bg-raiselyPurpleMedium rounded-full py-4 text-white font-bold;
-  transition: all 1s linear;
-}
-
-.btn:disabled {
-  @apply opacity-75;
-}
-
-.btn:hover {
-  @apply bg-raiselyPurpleLight;
-  transition: all 0.5s linear;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 
 .form-label {
@@ -46,6 +26,18 @@ input:required:valid {
 input:focus:required:invalid,
 input:not(:placeholder-shown):invalid {
   border: 1px solid tomato !important;
+}
+
+.btn:disabled {
+  @apply opacity-75;
+}
+
+.btn {
+  @apply bg-raiselyPurpleMedium font-normal w-full py-4 rounded-full text-white mx-auto text-2xl transition-all duration-1000;
+}
+
+.btn:hover {
+  @apply bg-raiselyPurpleLight;
 }
 
 @tailwind utilities;
