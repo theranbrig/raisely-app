@@ -2,7 +2,7 @@
 
 A few notes on what was built here.
 
-[Deployed Version]()
+[Deployed Version](https://raisely-brigowatz-application.netlify.app/)
 
 ## Tools
 
