@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import ProcessComplete from './ProcessComplete';
 import SuccessModal from './SuccessModal';
 
 const Form = () => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(true);
   const [processComplete, setProcessComplete] = useState(false);
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -36,21 +37,24 @@ const Form = () => {
 
   const emailValidation = async (e) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
     await postRequest('check-user', { email }).then(async (response) => {
       const data = await response.json();
       if (!response.ok) {
         if (data.errors.length) {
-          setError(data.errors[0].message);
+          setError(data.errors[0].detail);
         } else {
           setError(`${response.status} Error: Please try again`);
         }
+        setLoading(false);
         return Promise.reject(error);
       }
       const { status } = data.data;
       if (status === 'EXISTS') {
+        setLoading(false);
         setError('Oops. An account with this email is already in use.');
       } else {
-        console.log('A OK');
         submitFormData();
       }
     });
@@ -58,20 +62,20 @@ const Form = () => {
 
   const submitFormData = async (e) => {
     const jsonData = { email, firstName, lastName, password };
-    console.log(jsonData);
     postRequest('signup', jsonData).then(async (response) => {
       const data = await response.json();
       console.log(data);
       if (!response.ok) {
-        console.log(data.errors);
         if (data.errors.length) {
           setError(data.errors[0].message);
         } else {
           setError(`${response.status} Error: Please try again`);
         }
+        setLoading(false);
         return Promise.reject(error);
       }
       setSuccess(true);
+      setLoading(false);
     });
   };
 
@@ -122,8 +126,8 @@ const Form = () => {
             placeholder=' '
           />
         </div>
-        <div className='relative'>
-          <label className='form-label' htmlFor='email'>
+        <div className='relative mb-8'>
+          <label className='form-label' htmlFor='password'>
             Password
           </label>
           <input
@@ -138,13 +142,15 @@ const Form = () => {
           />
         </div>
         <button
-          disabled={!firstName || !lastName || !email || !password}
-          className='btn'
-          type='submit'>
-          Send
+          disabled={ loading || !firstName || !lastName || !email || !password }
+          className='mx-auto text-2xl font-extrabold'
+          type='submit' href="#"
+        >
+          <span>{loading ? 'REGISTERING...' : 'REGISTER'}</span>
+          <div className="liquid"></div>
         </button>
+        {error ? <p className='w-full bg-red-200 mt-12 p-8 text-lg'>{error}</p> : null}
       </form>
-      {error ? <p>{error}</p> : null}
       {success ? (
         <SuccessModal
           email={email}
@@ -161,5 +167,3 @@ const Form = () => {
 };
 
 export default Form;
-
-// #281364

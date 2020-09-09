@@ -40,7 +40,7 @@ code {
 }
 
 input:required:valid {
-  border: 1px solid seagreen !important;
+  border: 1px solid #9638d8 !important;
 }
 
 input:focus:required:invalid,
